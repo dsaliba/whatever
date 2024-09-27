@@ -2,6 +2,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import dataManager from "../components/DataManager";
 import { CardData, CardSwiper } from "react-card-swiper";
+import ResturantCard from "../components/ResturantCard";
 
 dataManager.init();
 
@@ -26,7 +27,11 @@ const IndexPage = () => {
   dataManager.roomManager.bind(useCallback((data)=> {
     console.log(data)
     if (data.message.command === "start") {
-      fetch(`https://api.geoapify.com/v2/places?categories=catering.restaurant&filter=circle:${data.message.data.lon},${data.message.data.lat},5000&bias=proximity:-71.807433,42.247125&limit=50&apiKey=${process.env.NEXT_PUBLIC_PLACES_KEY}`)
+      fetch(`https://api.yelp.com/v3/businesses/search?latitude=${data.message.data.lat}&longitude=${data.message.data.lon}&term=restaurants&categories=&open_now=true&sort_by=rating&limit=50`,
+        {headers: new Headers({
+          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_YELP}`, 
+      }), }
+      )
         .then(response => response.json())
         .then((result) => {
           dataManager.setResturants(result)
@@ -61,12 +66,7 @@ const IndexPage = () => {
       <div className="match-text">
                         Match!
                         </div>
-      <div className="resturant-name">
-                        {matchedResturant.properties.name}
-                        </div>
-                        <div className="resturant-distance">
-                            {Number(matchedResturant.properties.distance * 0.0006213712).toFixed(1)} Miles
-                          </div>
+                        <ResturantCard data={matchedResturant}/>
                     </div>
                     </div>
                     }
@@ -130,8 +130,11 @@ const IndexPage = () => {
                       </div>
 
                       <button className="start-button" onClick={()=> {
-                         fetch(`https://api.geoapify.com/v2/places?categories=catering.restaurant&filter=circle:${lon},${lat},5000&bias=proximity:-71.807433,42.247125&limit=50&apiKey=${process.env.NEXT_PUBLIC_PLACES_KEY}`)
-                         .then(response => response.json())
+                        fetch(`https://api.yelp.com/v3/businesses/search?latitude=${lat}&longitude=${lon}&term=restaurants&categories=&open_now=true&sort_by=rating&limit=50`,
+                          {headers: new Headers({
+                            'Authorization': `Bearer ${process.env.NEXT_PUBLIC_YELP}`, 
+                        }), }
+                        ).then(response => response.json())
                          .then((result) => {dataManager.setResturants(result)
                           setCurrentState(State.Active);
                         dataManager.roomManager.send({
@@ -162,18 +165,11 @@ const IndexPage = () => {
         data={(():CardData[]=>{
           const data = [];
           // @ts-ignore
-          dataManager.resturants.features.forEach(element => {
+          dataManager.resturants.businesses.forEach(element => {
               data.push(
                 {
-                  id: element.properties.place_id,
-                  content: <div className="card">
-                      <div className="resturant-name">
-                        {element.properties.name}
-                        </div>
-                        <div className="resturant-distance">
-                            {Number(element.properties.distance * 0.0006213712).toFixed(1)} Miles
-                          </div>
-                    </div>
+                  id: element.id,
+                  content: <ResturantCard data={element}/>
                 }
               )
           });
@@ -193,7 +189,7 @@ const IndexPage = () => {
             })
           }
         }}
-        withActionButtons
+        //withActionButtons
         withRibbons
         likeRibbonText="Sure"
         dislikeRibbonText="Nah"

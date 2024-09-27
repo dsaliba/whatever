@@ -34,8 +34,10 @@ class DataManager {
           } else {
             dataManager.likes[resturant] = [user]
           }
+          // @ts-ignore
           if (dataManager.likes[resturant].length >= this.roomManager.getMemembersInfo().count) {
             console.log("Match!")
+            // @ts-ignore
             this.resturants.features.forEach(element => {
                 if (resturant === element.properties.place_id) {
                     this.matchCallback(element);

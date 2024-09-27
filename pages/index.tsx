@@ -52,7 +52,7 @@ const IndexPage = () => {
 
           });
   });
-  
+
 
   return (
   <div className="main-container">
@@ -161,6 +161,7 @@ const IndexPage = () => {
       <CardSwiper
         data={(():CardData[]=>{
           const data = [];
+          // @ts-ignore
           dataManager.resturants.features.forEach(element => {
               data.push(
                 {
@@ -182,9 +183,11 @@ const IndexPage = () => {
         })()}
         onDismiss={(el, meta, id, action, operation) => {
           if (action === "like") {
+            // @ts-ignore
             dataManager.addLike(id, dataManager.roomManager.getMemembersInfo().me.id);
             dataManager.roomManager.send({
               "command" : "like",
+              // @ts-ignore
               "sender": dataManager.roomManager.getMemembersInfo().me.id,
               "data": id
             })

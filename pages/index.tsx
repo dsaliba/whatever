@@ -52,6 +52,7 @@ const IndexPage = () => {
 
           });
   });
+  
 
   return (
   <div className="main-container">

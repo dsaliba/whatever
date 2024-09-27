@@ -1,0 +1,248 @@
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color:#1A1B26;
+    padding: 0;
+    margin: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    overflow-y:hidden ;
+    overflow-x: hidden;
+  }
+  
+  #__next {
+    flex: 1 1 auto;
+  }
+
+.top-bar {
+    
+    background-color: #BB9AF7;
+    color: #1A1B26;
+    width: 100%;
+    height: 100px;
+    font-size: 70px;
+    text-align: center;
+    vertical-align: center;
+    margin-top: 0px;
+    
+}
+
+.main-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.menu-items{
+    color:#A9B1D6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%
+}
+
+.or-box {
+    font-size: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.join-button {
+    background-color: #2AC3DE;
+    color: #1A1B26;
+    font-size: 40px;
+    text-align: center;
+    height: 50px;
+    width: 250px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+
+.host-button {
+    background-color: #2AC3DE;
+    color: #1A1B26;
+    font-size: 40px;
+    text-align: center;
+    height: 50px;
+    width: 250px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.input-box {
+    background-color: #414868;
+    color: #FF9E64;
+    font-size: 40px;
+    text-align: center;
+    height: 60px;
+    width: 300px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.lobby-items{
+    color:#A9B1D6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 100%;
+    max-width: 750px;
+    
+}
+
+.count-circle {
+    border-radius: 50%;
+    background-color: #F7768E;
+    color: #1A1B26;
+    font-size: 80px;
+    width: 30%;
+    text-align: center;
+    vertical-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    margin-top: 20%;
+    margin-bottom: 50px;
+}
+
+.start-button {
+    background-color: #9ECE6A;
+    color: #1A1B26;
+    font-size: 40px;
+    text-align: center;
+    height: 50px;
+    width: 250px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.bottom-bar {
+    
+    background-color: #414868;
+    color: #FF9E64;
+    width: 100%;
+    height: 100px;
+    font-size: 70px;
+    text-align: center;
+    vertical-align: center;
+    position: fixed;
+    bottom: 0;
+}
+
+.card-container {
+    margin: 10%;
+    height: 80%;
+    width:80%;
+    
+}
+
+.card {
+    background-color:#414868;
+    color:#A9B1D6;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.swipe-card__content {
+    height: 100%;
+}
+
+.swipe-card__container {
+    background-color:#414868;
+    color:#A9B1D6;
+}
+
+
+.resturant-name {
+    
+    color: #BB9AF7;
+    width: 100%;
+    height: 100px;
+    font-size: 40px;
+    text-align: center;
+    vertical-align: center;
+    margin-top: 20%;
+    
+}
+
+.resturant-distance {
+    
+    color: #FF9E64;
+    width: 100%;
+    height: 100px;
+    font-size: 35px;
+    text-align: center;
+    vertical-align: center;
+    margin-top: 30%;
+}
+
+.center-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.swipe-card__image-container {
+    display: none;
+}
+
+.match-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.match {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    background-color: #414868;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    animation: 0.5s match-popup;
+}
+
+@keyframes match-popup {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+.match-text {
+    
+    color: #9ECE6A;
+    width: 100%;
+    height: 100px;
+    font-size: 60px;
+    text-align: center;
+    vertical-align: center;
+    margin-top: 20%;
+    
+}
+
+.hidden {
+    display: non;
+}

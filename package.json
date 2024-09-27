@@ -7,9 +7,17 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@next/env": "^14.2.13",
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
     "next": "latest",
+    "next-api-handler": "^0.4.10",
+    "pusher": "^5.2.0",
+    "pusher-js": "^8.4.0-rc2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-card-swiper": "^1.1.25",
+    "react-dom": "^18.2.0",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@types/node": "^12.12.21",
